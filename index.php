@@ -2,12 +2,14 @@
 /***************************************************************************
  *
  *      Encode Explorer
+ *      The Bootstrap Version
+ * 
+ *      Authors / Autors : Marek Rei (marek ät siineiolekala dot net)
+ *                       : Vino Rodrigues
+ * 
+ *      Version / Versioon : 6.3.BS
  *
- *      Author / Autor : Marek Rei (marek ät siineiolekala dot net)
- *
- *      Version / Versioon : 6.3
- *
- *      Last change / Viimati muudetud: 23.09.2011
+ *      Last change / Viimati muudetud: 4.04.2014
  *
  *      Homepage / Koduleht: encode-explorer.siineiolekala.net
  *
@@ -833,10 +835,6 @@ function css()
 	font-size: small;
 }
 
-</style>
-
-<!-- style type="text/css">
-
 /* Thumbnail area */
 
 #thumb {
@@ -851,23 +849,7 @@ function css()
 	display:block;
 }
 
-/* Breadcrumbs */
-
-div.breadcrumbs {
-	display:block;
-	padding:1px 3px;
-	color:#cccccc;
-	font-size:x-small;
-}
-
-div.breadcrumbs a{
-	display:inline-block;
-	color:#cccccc;
-	padding:2px 0;
-	font-size:small;
-}
-
-</style -->
+</style>
 
 <?php
 }
@@ -2574,17 +2556,24 @@ else
 if(EncodeExplorer::getConfig("show_path") == true)
 {
 ?>
-<div class="breadcrumbs">
-<a href="?dir="><?php print $this->getString("root"); ?></a>
+<ol class="breadcrumb">
+<?php $cnt = count($this->location->path); ?>
+<li<?php if($cnt != 0){ ?>><a href="?dir="><?php print $this->getString("root"); ?></a><?php } else { print " class=\"active\">" . $this->getString("root"); } ?></li>
 <?php
-	for($i = 0; $i < count($this->location->path); $i++)
+	for($i = 0; $i < $cnt; $i++)
 	{
-		print "&gt; <a href=\"".$this->makeLink(false, false, null, null, null, $this->location->getDir(false, true, false, count($this->location->path) - $i - 1))."\">";
-		print $this->location->getPathLink($i, true);
-		print "</a>\n";
+		print "<li";
+                if($i == ($cnt-1)) {
+                    print " class=\"active\">" . $this->location->getPathLink($i, true);
+                } else {
+                    print "><a href=\"".$this->makeLink(false, false, null, null, null, $this->location->getDir(false, true, false, $cnt - $i - 1))."\">";
+                    print $this->location->getPathLink($i, true);
+                    print "</a>";
+                }
+                print "</li>";
 	}
 ?>
-</div>
+</ol>
 <?php 
 }
 ?>
