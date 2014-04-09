@@ -1,26 +1,26 @@
 <?php
 /***************************************************************************
  *
- *             Encode Explorer
+ *      Encode Explorer
  *
- *             Author / Autor : Marek Rei (marek ät siineiolekala dot net)
+ *      Author / Autor : Marek Rei (marek ät siineiolekala dot net)
  *
- *             Version / Versioon : 6.3
+ *      Version / Versioon : 6.3
  *
- *             Last change / Viimati muudetud: 23.09.2011
+ *      Last change / Viimati muudetud: 23.09.2011
  *
- *             Homepage / Koduleht: encode-explorer.siineiolekala.net
+ *      Homepage / Koduleht: encode-explorer.siineiolekala.net
  *
  *
- *             NB!: Comments are in english.
- *                  Comments needed for configuring are in both estonian and english.
- *                  If you change anything, save with UTF-8! Otherwise you may
- *                  encounter problems, especially when displaying images.
+ *      NB!: Comments are in english.
+ *           Comments needed for configuring are in both estonian and english.
+ *           If you change anything, save with UTF-8! Otherwise you may
+ *           encounter problems, especially when displaying images.
  *                  
- *             NB!: Kommentaarid on inglise keeles.
- *                  Seadistamiseks vajalikud kommentaarid on eesti ja inglise keeles.
- *                  Kui midagi muudate, salvestage UTF-8 formaati! Vastasel juhul
- *                  võivad probleemid tekkida, eriti piltide kuvamisega.
+ *      NB!: Kommentaarid on inglise keeles.
+ *           Seadistamiseks vajalikud kommentaarid on eesti ja inglise keeles.
+ *           Kui midagi muudate, salvestage UTF-8 formaati! Vastasel juhul
+ *           võivad probleemid tekkida, eriti piltide kuvamisega.
  *
  ***************************************************************************/
 
@@ -84,26 +84,8 @@ $_CONFIG['thumbnails'] = true;
 // Default: $_CONFIG['thumbnails_width'] = 200;
 // Default: $_CONFIG['thumbnails_height'] = 200;
 //
-$_CONFIG['thumbnails_width'] = 300;
-$_CONFIG['thumbnails_height'] = 300;
-
-//
-// Mobillidele mõeldud kasutajaliides. true/false
-// Vaikimisi: true
-// 
-// Mobile interface enabled. true/false
-// Default: $_CONFIG['mobile_enabled'] = true;
-//
-$_CONFIG['mobile_enabled'] = true;
-
-//
-// Mobiilidele mõeldud kasutajaliides avaneb automaatselt. true/false
-// Vaikimisi: false
-//
-// Mobile interface as the default setting. true/false
-// Default: $_CONFIG['mobile_default'] = false;
-//
-$_CONFIG['mobile_default'] = false;
+$_CONFIG['thumbnails_width'] = 200;
+$_CONFIG['thumbnails_height'] = 200;
 
 /*
  * USER INTERFACE
@@ -126,7 +108,7 @@ $_CONFIG['open_in_new_window'] = false;
 // Set it larger than 0 to display the total used space.
 // Default: $_CONFIG['calculate_space_level'] = 0;
 //
-$_CONFIG['calculate_space_level'] = 0;
+$_CONFIG['calculate_space_level'] = 1;
 
 //
 // Kas kuvatakse lehe päis? true/false
@@ -176,9 +158,9 @@ $_CONFIG['show_load_time'] = true;
 // Formaat faili muutmise aja kuvamiseks.
 //
 // The time format for the "last changed" column.
-// Default: $_CONFIG['time_format'] = "d.m.y H:i:s";
+// Default: $_CONFIG['time_format'] = "d/m/y H:i:s";
 //
-$_CONFIG['time_format'] = "d.m.y H:i:s";
+$_CONFIG['time_format'] = "d/m/y H:i:s";
 
 //
 // Kodeering, mida lehel kasutatakse. 
@@ -241,7 +223,7 @@ $_CONFIG['require_login'] = false;
 // For example: $_CONFIG['users'] = array(array("username", "password", "admin"));
 // Default: $_CONFIG['users'] = array();
 //
-$_CONFIG['users'] = array();
+$_CONFIG['users'] = array(array("vino", "1", "admin"));
 
 //
 // Seaded uploadimiseks, uute kaustade loomiseks ja kustutamiseks.
@@ -256,7 +238,7 @@ $_CONFIG['users'] = array();
 //
 $_CONFIG['upload_enable'] = true;
 $_CONFIG['newdir_enable'] = true;
-$_CONFIG['delete_enable'] = false;
+$_CONFIG['delete_enable'] = true;
 
 /*
  * UPLOADING
@@ -443,8 +425,6 @@ $_TRANSLATIONS["en"] = array(
 	"log_file_permission_error" => "The script does not have permissions to write the log file.",
 	"upload_not_allowed" => "The script configuration does not allow uploading in this directory.",
 	"upload_dir_not_writable" => "This directory does not have write permissions.",
-	"mobile_version" => "Mobile view",
-	"standard_version" => "Standard view",
 	"page_load_time" => "Page loaded in %.2f ms",
 	"wrong_pass" => "Wrong username or password",
 	"username" => "Username",
@@ -495,8 +475,6 @@ $_TRANSLATIONS["fi"] = array(
 	"log_file_permission_error" => "Ohjelman ei ole sallittu kirjoittaa lokiin.",
 	"upload_not_allowed" => "Ohjelman asetukset eivät salli tiedoston lisäämistä tähän kansioon.",
 	"upload_dir_not_writable" => "Kansioon tallentaminen epäonnistui.",
-	"mobile_version" => "Mobiilinäkymä",
-	"standard_version" => "Tavallinen näkymä",
 	"page_load_time" => "Sivu ladattu %.2f ms:ssa",
 	"wrong_pass" => "Väärä käyttäjätunnus tai salasana",
 	"username" => "Käyttäjätunnus",
@@ -587,8 +565,6 @@ $_TRANSLATIONS["hu"] = array(
 	"log_file_permission_error" => "A log fájl írása jogosultsági okok miatt nem sikerült.",
 	"upload_not_allowed" => "Ebbe a mappába a feltöltés nem engedélyezett.",
 	"upload_dir_not_writable" => "A mappa nem írható.",
-	"mobile_version" => "Mobil nézet",
-	"standard_version" => "Web nézet",
 	"page_load_time" => "Letöltési id? %.2f ms",
 	"wrong_pass" => "Rossz felhasználónév vagy jelszó",
 	"username" => "Felhasználónév",
@@ -657,8 +633,6 @@ $_TRANSLATIONS["pl"] = array(
 	"log_file_permission_error" => "Brak uprawnien aby utowrzyc dziennik dzialan.",
 	"upload_not_allowed" => "Konfiguracja zabrania przeslanie pliku do tego foldera.",
 	"upload_dir_not_writable" => "Nie mozna zapisac pliku do tego foldera.",
-	"mobile_version" => "Wersja Mobile",
-	"standard_version" => "Widok standardowy",
 	"page_load_time" => "Zaladowano w %.2f ms",
 	"wrong_pass" => "Nie poprawna nazwa uzytkownika lub hasla",
 	"username" => "Uzytkownik",
@@ -687,8 +661,6 @@ $_TRANSLATIONS["pt_BR"] = array(
 	"log_file_permission_error" => "O script não tem permissão para escrever o arquivo de log.",
 	"upload_not_allowed" => "A configuração do script não permite envios neste diretório.",
 	"upload_dir_not_writable" => "Não há permissão para escrita neste diretório.",
-	"mobile_version" => "Versão Móvel",
-	"standard_version" => "Versão Padrão",
 	"page_load_time" => "Página carregada em %.2f ms",
 	"wrong_pass" => "Nome de usuário ou senha errados",
 	"username" => "Nome de Usuário",
@@ -737,8 +709,6 @@ $_TRANSLATIONS["ru"] = array(
     "log_file_permission_error" => "Скрипт не имеет прав для записи лога файла.",
     "upload_not_allowed" => "Загрузка в эту папку запрещена в настройках скрипта",
     "upload_dir_not_writable" => "В эту папку запрещена запись",
-    "mobile_version" => "Мобильный вид",
-    "standard_version" => "Обычный вид",
     "page_load_time" => "Страница загружена за %.2f мс.",
     "wrong_pass" => "Неверное имя пользователя или пароль",
     "username" => "Имя пользователя",
@@ -836,140 +806,36 @@ $_TRANSLATIONS["tr"] = array(
 function css()
 {
 ?>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <style type="text/css">
 
 /* General styles */
 
-BODY {
-	background-color:#FFFFFF;
-	font-family:Verdana;
-	font-size:small;
-}
-
-A {
-	color: #000000;
-	text-decoration: none;
-}
-
-A:hover {
-	text-decoration: underline;
-}
-
-#top {
-	width:100%;
-	padding-bottom: 20px;
-}
-
-#top a span, #top a:hover, #top a span:hover{
-	color:#68a9d2;
-	font-weight:bold;
-	text-align:center;
-	font-size:large;
-}
-
-#top a {
-	display:block;
-	padding:20px 0 0 0;
-}
-
-#top span {
-	display:block;
-}
-
-div.subtitle{
-	width:80%;
-	margin: 0 auto;
-	color:#68a9d2;
-	text-align:center;
-}
-
-#frame {
-	border: 1px solid #CDD2D6;
-	text-align:left;
-	position: relative;
-	margin: 0 auto;
-	max-width:680px;
-	overflow:hidden;
-}
-
-#error {
-	max-width:450px;
-	background-color:#FFE4E1;
-	color:#000000;
-	padding:7pt;
-	position: relative;
-	margin: 10pt auto;
-	text-align:center;
-	border: 1px dotted #CDD2D6;
-}
-
-input {
-	border: 1px solid #CDD2D6;
-}
-
-.bar{
-	width:100%;
-	clear:both;
-	height:1px;
-}
-
-/* File list */
-
-table.table {
-	width:100%;
-	border-collapse: collapse; 
-}
-
-table.table td{
-	padding:3px;
-}
-
-table.table tr.row.two {
-	background-color:#fcfdfe;
-}
-
-table.table tr.row.one {
-	background-color:#f8f9fa;
-}
-
-table.table tr.row td.icon {
-	width:25px;
-	padding-top:3px;
-	padding-bottom:1px;
-}
-
-table.table td.del {
-	width:25px;
-}
-
-table.table tr.row td.size {
-	width: 100px; 
-	text-align: right;
-}
-
-table.table tr.row td.changed {
-	width: 150px;
-	text-align: center;
-}
-
-table.table tr.header img {
-	vertical-align:bottom;
-}
-
-table img{
-	border:0;
+.bs-callout {
+	margin: 20px 0;
+	padding: 20px;
 }
 
 /* Info area */ 
 
 #info {
-	color:#000000;
-	font-family:Verdana;
-	max-width:680px;
 	position: relative;
 	margin: 0 auto;
-	text-align:center;
+	text-align: center;
+        margin-top: 10px;
+        padding-top: 5px;
+        border-top: 1px solid #EEE;
 }
+
+/* Upload area */
+
+#upload input.upload_file{
+	font-size: small;
+}
+
+</style>
+
+<!-- style type="text/css">
 
 /* Thumbnail area */
 
@@ -983,45 +849,6 @@ table img{
 
 #thumb img {
 	display:block;
-}
-
-/* Login bar (at the bottom of the page) */
-#login_bar {
-	margin: 0 auto;
-	margin-top:2px;
-	max-width:680px;
-}
-
-#login_bar input.submit{
-	float:right;
-}
-
-/* Upload area */
-
-#upload {
-	margin: 0 auto;
-	margin-top:2px;
-	max-width:680px;
-}
-
-#upload #password_container {
-	margin-right:20px;
-}
-
-#upload #newdir_container, #upload #password_container {
-	float:left;
-}
-
-#upload #upload_container{
-	float:right;
-}
-
-#upload input.upload_dirname, #upload input.upload_password{
-	width:140px;
-}
-
-#upload input.upload_file{
-	font-size:small;
 }
 
 /* Breadcrumbs */
@@ -1040,79 +867,7 @@ div.breadcrumbs a{
 	font-size:small;
 }
 
-/* Login area */
-
-#login {
-	max-width:280px;
-	text-align:right;
-	margin:15px auto 50px auto;
-}
-
-#login div {
-	display:block;
-	width:100%;
-	margin-top:5px;
-}
-
-#login label{
-	width: 120px;
-	text-align: right;
-}
-
-/* Mobile interface */
-
-body.mobile #frame, body.mobile #info, body.mobile #upload {
-	max-width:none;
-}
-
-body.mobile {
-	font-size:medium;
-}
-
-body.mobile a.item {
-	display:block;
-	padding:10px 0;
-}
-
-body.mobile a.item span.size {
-	float:right;
-	margin-left:10px;
-}
-
-body.mobile table.table {
-	margin-bottom:30px;
-}
-
-body.mobile table.table tr td {
-	border-top: 1px solid #CDD2D6;
-}
-
-body.mobile table.table tr.last td {
-	border-bottom: 1px solid #CDD2D6;
-}
-
-body.mobile #top {
-	padding-bottom:3px;
-}
-
-body.mobile #top a {
-	padding-top:3px;
-}
-
-body.mobile #upload #password_container, body.mobile #upload #upload_container, body.mobile #upload #newdir_container {
-	float:none;
-	margin-top:5px;
-}
-
-body.mobile #upload input.upload_dirname, body.mobile #upload input.upload_password{
-	width:240px;
-}
-
-body.mobile #upload {
-	margin-bottom:15px;
-}
-
-</style>
+</style -->
 
 <?php
 }
@@ -1142,20 +897,6 @@ $_IMAGES["arrow_up"] = "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEA
 U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAABbSURBVCjPY/jPgB8yDDkFmyVWv14kh1PB
 eoll31f/n/ytUw6rgtUSi76s+L/x/8z/Vd8KFbEomPt16f/1/1f+X/S/7X/qeSwK+v63/K/6X/g/
 83/S/5hvQywkAdMGCdCoabZeAAAAAElFTkSuQmCC";
-$_IMAGES["del"] = "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0
-U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJdSURBVDjLpZP7S1NhGMf9W7YfogSJboSE
-UVCY8zJ31trcps6zTI9bLGJpjp1hmkGNxVz4Q6ildtXKXzJNbJRaRmrXoeWx8tJOTWptnrNryre5
-YCYuI3rh+8vL+/m8PA/PkwIg5X+y5mJWrxfOUBXm91QZM6UluUmthntHqplxUml2lciF6wrmdHri
-I0Wx3xw2hAediLwZRWRkCPzdDswaSvGqkGCfq8VEUsEyPF1O8Qu3O7A09RbRvjuIttsRbT6HHzeb
-sDjcB4/JgFFlNv9MnkmsEszodIIY7Oaut2OJcSF68Qx8dgv8tmqEL1gQaaARtp5A+N4NzB0lMXxo
-n/uxbI8gIYjB9HytGYuusfiPIQcN71kjgnW6VeFOkgh3XcHLvAwMSDPohOADdYQJdF1FtLMZPmsl
-vhZJk2ahkgRvq4HHUoWHRDqTEDDl2mDkfheiDgt8pw340/EocuClCuFvboQzb0cwIZgki4KhzlaE
-6w0InipbVzBfqoK/qRH94i0rgokSFeO11iBkp8EdV8cfJo0yD75aE2ZNRvSJ0lZKcBXLaUYmQrCz
-DT6tDN5SyRqYlWeDLZAg0H4JQ+Jt6M3atNLE10VSwQsN4Z6r0CBwqzXesHmV+BeoyAUri8EyMfi2
-FowXS5dhd7doo2DVII0V5BAjigP89GEVAtda8b2ehodU4rNaAW+dGfzlFkyo89GTlcrHYCLpKD+V
-7yeeHNzLjkp24Uu1Ed6G8/F8qjqGRzlbl2H2dzjpMg1KdwsHxOlmJ7GTeZC/nesXbeZ6c9OYnuxU
-c3fmBuFft/Ff8xMd0s65SXIb/gAAAABJRU5ErkJggg==";
-
 
 $_IMAGES["archive"] = "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0
 U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJmSURBVDjLhZNNS5RRGIav8+HMvDNO5ZhO
@@ -1542,7 +1283,7 @@ class ImageServer
 				else {
 					header('ETag: "'.$etag.'"');
 					header('Last-Modified: '.$mtime);
-					header('Content-type: image/gif');
+					//header('Content-type: image/gif');
 					if(isset($_IMAGES[$_GET['img']]))
 						print base64_decode($_IMAGES[$_GET['img']]);
 					else
@@ -1759,7 +1500,7 @@ class GateKeeper
 				session_name(EncodeExplorer::getConfig("session_name"));
 				
 		if(count(EncodeExplorer::getConfig("users")) > 0)
-			session_start();			
+			@session_start();
 		else
 			return;
 			
@@ -2372,7 +2113,6 @@ class EncodeExplorer
 	var $files;
 	var $sort_by;
 	var $sort_as;
-	var $mobile;
 	var $logging;
 	var $spaceUsed;
 	var $lang;
@@ -2405,13 +2145,6 @@ class EncodeExplorer
 			$this->lang = $_GET['lang'];
 		else
 			$this->lang = EncodeExplorer::getConfig("lang");
-		
-		$this->mobile = false;
-		if(EncodeExplorer::getConfig("mobile_enabled") == true)
-		{
-			if((EncodeExplorer::getConfig("mobile_default") == true || isset($_GET['m'])) && !isset($_GET['s']))
-				$this->mobile = true;
-		}
 		
 		$this->logging = false;
 		if(EncodeExplorer::getConfig("log_file") != null && strlen(EncodeExplorer::getConfig("log_file")) > 0)
@@ -2532,24 +2265,13 @@ class EncodeExplorer
 	function makeLink($switchVersion, $logout, $sort_by, $sort_as, $delete, $dir)
 	{
 		$link = "?";
-		if($switchVersion == true && EncodeExplorer::getConfig("mobile_enabled") == true)
-		{
-			if($this->mobile == false)
-				$link .= "m&amp;";
-			else
-				$link .= "s&amp;";
-		}
-		else if($this->mobile == true && EncodeExplorer::getConfig("mobile_enabled") == true && EncodeExplorer::getConfig("mobile_default") == false)
-			$link .= "m&amp;";
-		else if($this->mobile == false && EncodeExplorer::getConfig("mobile_enabled") == true && EncodeExplorer::getConfig("mobile_default") == true)
-			$link .= "s&amp;";
-			
+
 		if($logout == true)
 		{
 			$link .= "logout";
 			return $link;
 		}
-			
+
 		if(isset($this->lang) && $this->lang != EncodeExplorer::getConfig("lang"))
 			$link .= "lang=".$this->lang."&amp;";
 			
@@ -2573,7 +2295,7 @@ class EncodeExplorer
 
 	function formatModTime($time)
 	{
-		$timeformat = "d.m.y H:i:s";
+		$timeformat = "d/m/y H:i:s";
 		if(EncodeExplorer::getConfig("time_format") != null && strlen(EncodeExplorer::getConfig("time_format")) > 0)
 			$timeformat = EncodeExplorer::getConfig("time_format");
 		return date($timeformat, $time);
@@ -2685,7 +2407,7 @@ class EncodeExplorer
 	{
 		?>
 		<div id="login">
-		<form enctype="multipart/form-data" action="<?php print $this->makeLink(false, false, null, null, null, ""); ?>" method="post">
+		<form enctype="multipart/form-data" action="<?php print $this->makeLink(false, false, null, null, null, ""); ?>" method="post" class="form-horizontal" role="form">
 		<?php 
 		if(GateKeeper::isLoginRequired())
 		{
@@ -2699,14 +2421,16 @@ class EncodeExplorer
 			if($require_username)
 			{
 			?>
-			<div><label for="user_name"><?php print $this->getString("username"); ?>:</label>
-			<input type="text" name="user_name" value="" id="user_name" /></div>
+			<div class="form-group"><label for="user_name" class="col-sm-2 control-label"><?php print $this->getString("username"); ?></label>
+			<div class="col-sm-8"><input type="text" name="user_name" value="" id="user_name" class="form-control" /></div></div>
 			<?php 
 			}
 			?>
-			<div><label for="user_pass"><?php print $this->getString("password"); ?>:</label>
-			<input type="password" name="user_pass" id="user_pass" /></div>
-			<div><input type="submit" value="<?php print $this->getString("log_in"); ?>" class="button" /></div>
+			<div class="form-group"><label for="user_pass" class="col-sm-2 control-label"><?php print $this->getString("password"); ?></label>
+			<div class="col-sm-8"><input type="password" name="user_pass" id="user_pass" class="form-control" /></div></div>
+                        <div class="form-group"><div class="col-sm-offset-2 col-sm-8">
+			<input type="submit" value="<?php print $this->getString("log_in"); ?>" class="btn btn-default" />
+			</div></div>
 		</form>
 		</div>
 	<?php 
@@ -2722,19 +2446,21 @@ class EncodeExplorer
 		global $_START_TIME;
 ?>
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $this->getConfig('lang'); ?>" lang="<?php print $this->getConfig('lang'); ?>">
+<html lang="<?php print $this->getConfig('lang'); ?>">
 <head>
-<meta name="viewport" content="width=device-width" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=<?php print $this->getConfig('charset'); ?>">
 <?php css(); ?>
 <!-- <meta charset="<?php print $this->getConfig('charset'); ?>" /> -->
 <?php
 if(($this->getConfig('log_file') != null && strlen($this->getConfig('log_file')) > 0)
-	|| ($this->getConfig('thumbnails') != null && $this->getConfig('thumbnails') == true && $this->mobile == false)
+	|| ($this->getConfig('thumbnails') != null && $this->getConfig('thumbnails') == true)
 	|| (GateKeeper::isDeleteAllowed()))
 { 
 ?>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 //<![CDATA[
 $(document).ready(function() {
@@ -2767,7 +2493,7 @@ $(document).ready(function() {
 		});
 <?php 
 	}
-	if(EncodeExplorer::getConfig("thumbnails") == true && $this->mobile == false)
+	if(EncodeExplorer::getConfig("thumbnails") == true)
 	{
 ?>
 		function positionThumbnail(e) {
@@ -2808,31 +2534,33 @@ $(document).ready(function() {
 ?>
 <title><?php if(EncodeExplorer::getConfig('main_title') != null) print EncodeExplorer::getConfig('main_title'); ?></title>
 </head>
-<body class="<?php print ($this->mobile == true?"mobile":"standard");?>">
+<body>
+<div class="container"><div class="row"><div class="col-md-8 col-md-offset-2">
 <?php 
 //
 // Print the error (if there is something to print)
 //
 if(isset($_ERROR) && strlen($_ERROR) > 0)
 {
-	print "<div id=\"error\">".$_ERROR."</div>";
+	print "<div id=\"error\" class=\"bs-callout bg-danger\">".$_ERROR."</div>";
 }
 ?>
+
 <div id="frame">
 <?php
 if(EncodeExplorer::getConfig('show_top') == true)
 {
 ?>
-<div id="top">
-	<a href="<?php print $this->makeLink(false, false, null, null, null, ""); ?>"><span><?php if(EncodeExplorer::getConfig('main_title') != null) print EncodeExplorer::getConfig('main_title'); ?></span></a>
+<h1 id="top">
+    <a href="<?php print $this->makeLink(false, false, null, null, null, ""); ?>"><span><?php if(EncodeExplorer::getConfig('main_title') != null) print EncodeExplorer::getConfig('main_title'); ?></span></a>
 <?php 
-if(EncodeExplorer::getConfig("secondary_titles") != null && is_array(EncodeExplorer::getConfig("secondary_titles")) && count(EncodeExplorer::getConfig("secondary_titles")) > 0 && $this->mobile == false)
+if(EncodeExplorer::getConfig("secondary_titles") != null && is_array(EncodeExplorer::getConfig("secondary_titles")) && count(EncodeExplorer::getConfig("secondary_titles")) > 0)
 {
 	$secondary_titles = EncodeExplorer::getConfig("secondary_titles");
-	print "<div class=\"subtitle\">".$secondary_titles[array_rand($secondary_titles)]."</div>\n";
+	print "<small>".$secondary_titles[array_rand($secondary_titles)]."</small>\n";
 }
 ?>
-</div>
+</h1>
 <?php
 }
 
@@ -2843,7 +2571,7 @@ if(!GateKeeper::isAccessAllowed())
 }
 else 
 {
-if($this->mobile == false && EncodeExplorer::getConfig("show_path") == true)
+if(EncodeExplorer::getConfig("show_path") == true)
 {
 ?>
 <div class="breadcrumbs">
@@ -2862,26 +2590,20 @@ if($this->mobile == false && EncodeExplorer::getConfig("show_path") == true)
 ?>
 
 <!-- START: List table -->
-<table class="table">
-<?php 
-if($this->mobile == false)
-{
-?>
-<tr class="row one header">
-	<td class="icon"> </td>
-	<td class="name"><?php print $this->makeArrow("name");?></td>
-	<td class="size"><?php print $this->makeArrow("size"); ?></td>
-	<td class="changed"><?php print $this->makeArrow("mod"); ?></td>
-	<?php if($this->mobile == false && GateKeeper::isDeleteAllowed()){?>
-	<td class="del"><?php print EncodeExplorer::getString("del"); ?></td>
+<table class="table table-striped">
+<thead><tr class="row one header">
+	<th class="icon" width="5%"> </th>
+	<th class="name" width="<?php print GateKeeper::isDeleteAllowed()?60:65; ?>%"><?php print $this->makeArrow("name");?></th>
+	<th class="size" width="10%"><?php print $this->makeArrow("size"); ?></th>
+	<th class="changed" width="20%"><?php print $this->makeArrow("mod"); ?></th>
+	<?php if(GateKeeper::isDeleteAllowed()){?>
+	<th class="del" width="5%"><?php print EncodeExplorer::getString("del"); ?></th>
 	<?php } ?>
-</tr>
-<?php 
-}
-?>
+</tr></thead>
+<tbody>
 <tr class="row two">
 	<td class="icon"><img alt="dir" src="?img=directory" /></td>
-	<td colspan="<?php print (($this->mobile == true?2:(GateKeeper::isDeleteAllowed()?4:3))); ?>" class="long">
+	<td colspan="<?php print ((GateKeeper::isDeleteAllowed()?4:3)); ?>" class="long">
 		<a class="item" href="<?php print $this->makeLink(false, false, null, null, null, $this->location->getDir(false, true, false, 1)); ?>">..</a>
 	</td>
 </tr>
@@ -2901,13 +2623,15 @@ if($this->dirs)
 		$row_style = ($row ? "one" : "two");
 		print "<tr class=\"row ".$row_style."\">\n";
 		print "<td class=\"icon\"><img alt=\"dir\" src=\"?img=directory\" /></td>\n";
-		print "<td class=\"name\" colspan=\"".($this->mobile == true?2:3)."\">\n";
+		print "<td class=\"name\" colspan=\"3\">\n";
 		print "<a href=\"".$this->makeLink(false, false, null, null, null, $this->location->getDir(false, true, false, 0).$dir->getNameEncoded())."\" class=\"item dir\">";
 		print $dir->getNameHtml();
 		print "</a>\n";
 		print "</td>\n";
-		if($this->mobile == false && GateKeeper::isDeleteAllowed()){
-			print "<td class=\"del\"><a data-name=\"".htmlentities($dir->getName())."\" href=\"".$this->makeLink(false, false, null, null, $this->location->getDir(false, true, false, 0).$dir->getNameEncoded(), $this->location->getDir(false, true, false, 0))."\"><img src=\"?img=del\" alt=\"Delete\" /></a></td>";
+		if(GateKeeper::isDeleteAllowed()){
+			print "<td class=\"del\"><a data-name=\"".htmlentities($dir->getName())."\" href=\"".$this->makeLink(false, false, null, null, $this->location->getDir(false, true, false, 0).$dir->getNameEncoded(), $this->location->getDir(false, true, false, 0))."\" class=\"btn btn-xs btn-danger\">"
+                                . "<span class=\"glyphicon glyphicon-remove\"></span>"
+                                . "</a></td>";
 		}
 		print "</tr>\n";
 		$row =! $row;
@@ -2934,23 +2658,22 @@ if($this->files)
 			print " thumb";
 		print "\">";
 		print $file->getNameHtml();
-		if($this->mobile == true)
+		/* if($this->mobile == true)
 		{
 			print "<span class =\"size\">".$this->formatSize($file->getSize())."</span>";
-		}
+		} */
 		print "</a>\n";
 		print "</td>\n";
-		if($this->mobile != true)
-		{
+		/* if($this->mobile != true)
+		{ */
 			print "<td class=\"size\">".$this->formatSize($file->getSize())."</td>\n";
 			print "<td class=\"changed\">".$this->formatModTime($file->getModTime())."</td>\n";
-		}
-		if($this->mobile == false && GateKeeper::isDeleteAllowed()){
-			print "<td class=\"del\">
-				<a data-name=\"".htmlentities($file->getName())."\" href=\"".$this->makeLink(false, false, null, null, $this->location->getDir(false, true, false, 0).$file->getNameEncoded(), $this->location->getDir(false, true, false, 0))."\">
-					<img src=\"?img=del\" alt=\"Delete\" />
-				</a>
-			</td>";
+		/* } */
+		if(GateKeeper::isDeleteAllowed()){
+			print "<td class=\"del\">" .
+				"<a data-name=\"".htmlentities($file->getName())."\" href=\"".$this->makeLink(false, false, null, null, $this->location->getDir(false, true, false, 0).$file->getNameEncoded(), $this->location->getDir(false, true, false, 0))."\" class=\"btn btn-xs btn-danger\">" .
+				"<span class=\"glyphicon glyphicon-remove\"></span>" .
+				"</a></td>";
 		}
 		print "</tr>\n";
 		$row =! $row;
@@ -2962,7 +2685,7 @@ if($this->files)
 // The files and folders have been displayed
 //
 ?>
-
+</tbody>
 </table>
 <!-- END: List table -->
 <?php 
@@ -2974,15 +2697,16 @@ if($this->files)
 if(GateKeeper::isAccessAllowed() && GateKeeper::showLoginBox()){
 ?>
 <!-- START: Login area -->
-<form enctype="multipart/form-data" method="post">
-	<div id="login_bar">
-	<?php print $this->getString("username"); ?>:
-	<input type="text" name="user_name" value="" id="user_name" />
-	<?php print $this->getString("password"); ?>:
-	<input type="password" name="user_pass" id="user_pass" />
-	<input type="submit" class="submit" value="<?php print $this->getString("log_in"); ?>" />
-	<div class="bar"></div>
-	</div>
+<form enctype="multipart/form-data" method="post" class="form-inline" role="form">
+	<div class="form-group">
+	  <label class="sr-only" for="user_name"><?php print $this->getString("username"); ?></label>
+          <input type="text" class="form-control" name="user_name" value="" id="user_name" placeholder="<?php print $this->getString("username"); ?>" />
+        </div>
+        <div class="form-group">
+	  <label class="sr-only" for="user_pass"><?php print $this->getString("password"); ?></label>
+          <input type="password" class="form-control" name="user_pass" id="user_pass" placeholder="<?php print $this->getString("password"); ?>" />
+        </div>
+	<input type="submit" class="btn btn-default" value="<?php print $this->getString("log_in"); ?>" />
 </form>
 <!-- END: Login area -->
 <?php 
@@ -2992,29 +2716,33 @@ if(GateKeeper::isAccessAllowed() && $this->location->uploadAllowed() && (GateKee
 {
 ?>
 <!-- START: Upload area -->
-<form enctype="multipart/form-data" method="post">
-	<div id="upload">
-		<?php 
-		if(GateKeeper::isNewdirAllowed()){
-		?>
-		<div id="newdir_container">
-			<input name="userdir" type="text" class="upload_dirname" />
-			<input type="submit" value="<?php print $this->getString("make_directory"); ?>" />
+<div id="upload">
+	<?php 
+	if(GateKeeper::isNewdirAllowed()){
+	?>
+	<form method="post" class="form-inline" role="form">
+		<div id="newdir_container form-group">
+			<div class="form-group"><input name="userdir" type="text" class="upload_dirname form-control" /></div>
+			<input type="submit" value="<?php print $this->getString("make_directory"); ?>" class="btn btn-default" />
 		</div>
-		<?php 
-		}
-		if(GateKeeper::isUploadAllowed()){
-		?>
+        </form>
+	<?php 
+	}
+        if(GateKeeper::isNewdirAllowed() && GateKeeper::isUploadAllowed()){
+            print "<br />";
+        }
+	if(GateKeeper::isUploadAllowed()){
+	?>
+	<form enctype="multipart/form-data" method="post" class="form-inline" role="form">
 		<div id="upload_container">
-			<input name="userfile" type="file" class="upload_file" />
-			<input type="submit" value="<?php print $this->getString("upload"); ?>" class="upload_sumbit" />
+			<div class="form-group"><input name="userfile" type="file" class="upload_file" /></div>
+			<input type="submit" value="<?php print $this->getString("upload"); ?>" class="upload_sumbit btn btn-default" />
 		</div>
-		<?php 
-		}
-		?>
-		<div class="bar"></div>
-	</div>
-</form>
+	</form>
+	<?php
+	}
+	?>
+</div>
 <!-- END: Upload area -->
 <?php
 }
@@ -3026,24 +2754,25 @@ if(GateKeeper::isAccessAllowed() && $this->location->uploadAllowed() && (GateKee
 if(GateKeeper::isUserLoggedIn())
 	print "<a href=\"".$this->makeLink(false, true, null, null, null, "")."\">".$this->getString("log_out")."</a> | ";
 
-if(EncodeExplorer::getConfig("mobile_enabled") == true)
+/* if(EncodeExplorer::getConfig("mobile_enabled") == true)
 {
 	print "<a href=\"".$this->makeLink(true, false, null, null, null, $this->location->getDir(false, true, false, 0))."\">\n";
 	print ($this->mobile == true)?$this->getString("standard_version"):$this->getString("mobile_version")."\n";
 	print "</a> | \n";
-}
-if(GateKeeper::isAccessAllowed() && $this->getConfig("calculate_space_level") > 0 && $this->mobile == false)
+} */
+if(GateKeeper::isAccessAllowed() && $this->getConfig("calculate_space_level") > 0)
 {
 	print $this->getString("total_used_space").": ".$this->spaceUsed." MB | ";
 }
-if($this->mobile == false && $this->getConfig("show_load_time") == true)
+if($this->getConfig("show_load_time") == true)
 {
 	printf($this->getString("page_load_time")." | ", (microtime(TRUE) - $_START_TIME)*1000);
 }
 ?> 
-<a href="http://encode-explorer.siineiolekala.net">Encode Explorer</a>
+<a href="https://github.com/vinorodrigues/encode-explorer">Encode Explorer</a>
 </div>
 <!-- END: Info area -->
+</div></div></div>
 </body>
 </html>
 	

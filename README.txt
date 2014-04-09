@@ -1,12 +1,14 @@
 /***************************************************************************
  *
  *             Encode Explorer
+ *             The Bootstrap Version
  *
  *             Author / Autor : Marek Rei (marek ät siineiolekala dot net)
+ *                            : Vino Rodrigues
  *
- *             Version / Versioon : 6.3
+ *             Version / Versioon : 6.3.BS
  *
- *             Last change / Viimati muudetud: 23.09.2011
+ *             Last change / Viimati muudetud: 4.4.2014
  *
  *             Homepage / Koduleht: encode-explorer.siineiolekala.net
  *
