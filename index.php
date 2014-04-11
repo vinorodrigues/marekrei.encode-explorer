@@ -219,13 +219,14 @@ $_CONFIG['require_login'] = false;
 // Usernames and passwords for restricting access to the page.
 // The format is: array(username, password, status)
 // Status can be either "user" or "admin". User can read the page, admin can upload and delete.
-// For example: $_CONFIG['users'] = array(array("username1", "password1", "user"), array("username2", "password2", "admin"));
+// For example: $_CONFIG['users'] = array(array("username1", "md5_hash_of_password1", "user"), array("username2", "md5_hash_of_password2", "admin"));
 // You can also keep require_login=false and specify an admin. 
 // That way everyone can see the page but username and password are needed for uploading.
-// For example: $_CONFIG['users'] = array(array("username", "password", "admin"));
+// For example: $_CONFIG['users'] = array(array("username", "md5_hash_of_password", "admin"));
+// Passwords must be MD5 hashes (Never store clear text passwords!) - see: http://www.php.net/manual/en/function.md5.php
 // Default: $_CONFIG['users'] = array();
 //
-$_CONFIG['users'] = array(array("vino", "1", "admin"));
+$_CONFIG['users'] = array( );
 
 //
 // Seaded uploadimiseks, uute kaustade loomiseks ja kustutamiseks.
@@ -240,7 +241,7 @@ $_CONFIG['users'] = array(array("vino", "1", "admin"));
 //
 $_CONFIG['upload_enable'] = true;
 $_CONFIG['newdir_enable'] = true;
-$_CONFIG['delete_enable'] = true;
+$_CONFIG['delete_enable'] = false;
 
 /*
  * UPLOADING
@@ -1494,10 +1495,10 @@ class GateKeeper
 			
 		if(isset($_POST['user_pass']) && strlen($_POST['user_pass']) > 0)
 		{
-			if(GateKeeper::isUser((isset($_POST['user_name'])?$_POST['user_name']:""), $_POST['user_pass']))
+			if(GateKeeper::isUser((isset($_POST['user_name'])?$_POST['user_name']:""), md5($_POST['user_pass'])))
 			{
 				$_SESSION['ee_user_name'] = isset($_POST['user_name'])?$_POST['user_name']:"";
-				$_SESSION['ee_user_pass'] = $_POST['user_pass'];
+				$_SESSION['ee_user_pass'] = md5($_POST['user_pass']);
 				
 				$addr = $_SERVER['PHP_SELF'];
 				if(isset($_GET['m']))
@@ -1602,21 +1603,6 @@ class GateKeeper
 //
 class FileManager
 {
-	/* Obsolete code
-	function checkPassword($inputPassword)
-	{
-		global $encodeExplorer;
-		if(strlen(EncodeExplorer::getConfig("upload_password")) > 0 && $inputPassword == EncodeExplorer::getConfig("upload_password"))
-		{
-			return true;
-		}
-		else
-		{
-			$encodeExplorer->setErrorString("wrong_password");
-			return false;
-		}
-	}
-	*/
 	function newFolder($location, $dirname)
 	{
 		global $encodeExplorer;
@@ -2404,12 +2390,12 @@ class EncodeExplorer
 			{
 			?>
 			<div class="form-group"><label for="user_name" class="col-sm-2 control-label"><?php print $this->getString("username"); ?></label>
-			<div class="col-sm-8"><input type="text" name="user_name" value="" id="user_name" class="form-control" /></div></div>
+                        <div class="col-sm-8"><input type="text" name="user_name" value="" id="user_name" class="form-control" required /></div></div>
 			<?php 
 			}
 			?>
 			<div class="form-group"><label for="user_pass" class="col-sm-2 control-label"><?php print $this->getString("password"); ?></label>
-			<div class="col-sm-8"><input type="password" name="user_pass" id="user_pass" class="form-control" /></div></div>
+                        <div class="col-sm-8"><input type="password" name="user_pass" id="user_pass" class="form-control" required /></div></div>
                         <div class="form-group"><div class="col-sm-offset-2 col-sm-8">
 			<input type="submit" value="<?php print $this->getString("log_in"); ?>" class="btn btn-default" />
 			</div></div>
@@ -2647,17 +2633,10 @@ if($this->files)
 			print " thumb";
 		print "\">";
 		print $file->getNameHtml();
-		/* if($this->mobile == true)
-		{
-			print "<span class =\"size\">".$this->formatSize($file->getSize())."</span>";
-		} */
 		print "</a>\n";
 		print "</td>\n";
-		/* if($this->mobile != true)
-		{ */
-			print "<td class=\"size\">".$this->formatSize($file->getSize())."</td>\n";
-			print "<td class=\"changed\">".$this->formatModTime($file->getModTime())."</td>\n";
-		/* } */
+                print "<td class=\"size\">".$this->formatSize($file->getSize())."</td>\n";
+		print "<td class=\"changed\">".$this->formatModTime($file->getModTime())."</td>\n";
 		if(GateKeeper::isDeleteAllowed()){
 			print "<td class=\"del\">" .
 				"<a data-name=\"".htmlentities($file->getName())."\" href=\"".$this->makeLink(false, false, null, null, $this->location->getDir(false, true, false, 0).$file->getNameEncoded(), $this->location->getDir(false, true, false, 0))."\" class=\"btn btn-xs btn-danger\">" .
@@ -2689,11 +2668,11 @@ if(GateKeeper::isAccessAllowed() && GateKeeper::showLoginBox()){
 <form enctype="multipart/form-data" method="post" class="form-inline" role="form">
 	<div class="form-group">
 	  <label class="sr-only" for="user_name"><?php print $this->getString("username"); ?></label>
-          <input type="text" class="form-control" name="user_name" value="" id="user_name" placeholder="<?php print $this->getString("username"); ?>" />
+          <input type="text" class="form-control" name="user_name" value="" id="user_name" placeholder="<?php print $this->getString("username"); ?>" required />
         </div>
         <div class="form-group">
 	  <label class="sr-only" for="user_pass"><?php print $this->getString("password"); ?></label>
-          <input type="password" class="form-control" name="user_pass" id="user_pass" placeholder="<?php print $this->getString("password"); ?>" />
+          <input type="password" class="form-control" name="user_pass" id="user_pass" placeholder="<?php print $this->getString("password"); ?>" required />
         </div>
 	<input type="submit" class="btn btn-default" value="<?php print $this->getString("log_in"); ?>" />
 </form>
@@ -2711,7 +2690,7 @@ if(GateKeeper::isAccessAllowed() && $this->location->uploadAllowed() && (GateKee
 	?>
 	<form method="post" class="form-inline" role="form">
 		<div id="newdir_container form-group">
-			<div class="form-group"><input name="userdir" type="text" class="upload_dirname form-control" /></div>
+			<div class="form-group"><input name="userdir" type="text" class="upload_dirname form-control" required /></div>
 			<input type="submit" value="<?php print $this->getString("make_directory"); ?>" class="btn btn-default" />
 		</div>
         </form>
@@ -2724,7 +2703,7 @@ if(GateKeeper::isAccessAllowed() && $this->location->uploadAllowed() && (GateKee
 	?>
 	<form enctype="multipart/form-data" method="post" class="form-inline" role="form">
 		<div id="upload_container">
-			<div class="form-group"><input name="userfile" type="file" class="upload_file" /></div>
+			<div class="form-group"><input name="userfile" type="file" class="upload_file" required /></div>
 			<input type="submit" value="<?php print $this->getString("upload"); ?>" class="upload_sumbit btn btn-default" />
 		</div>
 	</form>
@@ -2743,12 +2722,6 @@ if(GateKeeper::isAccessAllowed() && $this->location->uploadAllowed() && (GateKee
 if(GateKeeper::isUserLoggedIn())
 	print "<a href=\"".$this->makeLink(false, true, null, null, null, "")."\">".$this->getString("log_out")."</a> | ";
 
-/* if(EncodeExplorer::getConfig("mobile_enabled") == true)
-{
-	print "<a href=\"".$this->makeLink(true, false, null, null, null, $this->location->getDir(false, true, false, 0))."\">\n";
-	print ($this->mobile == true)?$this->getString("standard_version"):$this->getString("mobile_version")."\n";
-	print "</a> | \n";
-} */
 if(GateKeeper::isAccessAllowed() && $this->getConfig("calculate_space_level") > 0)
 {
 	print $this->getString("total_used_space").": ".$this->spaceUsed." MB | ";
