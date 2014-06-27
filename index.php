@@ -809,7 +809,7 @@ $_TRANSLATIONS["tr"] = array(
 function css()
 {
 ?>
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <style type="text/css">
 
 /* General styles */
@@ -2428,7 +2428,7 @@ if(($this->getConfig('log_file') != null && strlen($this->getConfig('log_file'))
 { 
 ?>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 //<![CDATA[
 $(document).ready(function() {
