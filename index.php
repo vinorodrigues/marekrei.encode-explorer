@@ -4,7 +4,7 @@
  *      Encode Explorer
  *      The Bootstrap Version
  * 
- *      Authors / Autors : Marek Rei (marek ät siineiolekala dot net)
+ *             Author / Autor : Marek Rei (marek ät siineiolekala dot net)
  *                       : Vino Rodrigues
  * 
  *      Version / Versioon : 6.3.BS.2
@@ -360,7 +360,7 @@ $_CONFIG['large_files'] = false;
 $_CONFIG['session_name'] = "";
 
 /***************************************************************************/
-/*   TÕLKED                                                                */
+/*   T?LKED                                                                */
 /*                                                                         */
 /*   TRANSLATIONS.                                                         */
 /***************************************************************************/
@@ -428,6 +428,8 @@ $_TRANSLATIONS["en"] = array(
 	"log_file_permission_error" => "The script does not have permissions to write the log file.",
 	"upload_not_allowed" => "The script configuration does not allow uploading in this directory.",
 	"upload_dir_not_writable" => "This directory does not have write permissions.",
+	"mobile_version" => "Mobile view",
+	"standard_version" => "Standard view",
 	"page_load_time" => "Page loaded in %.2f ms",
 	"wrong_pass" => "Wrong username or password",
 	"username" => "Username",
@@ -478,6 +480,8 @@ $_TRANSLATIONS["fi"] = array(
 	"log_file_permission_error" => "Ohjelman ei ole sallittu kirjoittaa lokiin.",
 	"upload_not_allowed" => "Ohjelman asetukset eivät salli tiedoston lisäämistä tähän kansioon.",
 	"upload_dir_not_writable" => "Kansioon tallentaminen epäonnistui.",
+	"mobile_version" => "Mobiilinäkymä",
+	"standard_version" => "Tavallinen näkymä",
 	"page_load_time" => "Sivu ladattu %.2f ms:ssa",
 	"wrong_pass" => "Väärä käyttäjätunnus tai salasana",
 	"username" => "Käyttäjätunnus",
@@ -568,6 +572,8 @@ $_TRANSLATIONS["hu"] = array(
 	"log_file_permission_error" => "A log fájl írása jogosultsági okok miatt nem sikerült.",
 	"upload_not_allowed" => "Ebbe a mappába a feltöltés nem engedélyezett.",
 	"upload_dir_not_writable" => "A mappa nem írható.",
+	"mobile_version" => "Mobil nézet",
+	"standard_version" => "Web nézet",
 	"page_load_time" => "Letöltési id? %.2f ms",
 	"wrong_pass" => "Rossz felhasználónév vagy jelszó",
 	"username" => "Felhasználónév",
@@ -636,6 +642,8 @@ $_TRANSLATIONS["pl"] = array(
 	"log_file_permission_error" => "Brak uprawnien aby utowrzyc dziennik dzialan.",
 	"upload_not_allowed" => "Konfiguracja zabrania przeslanie pliku do tego foldera.",
 	"upload_dir_not_writable" => "Nie mozna zapisac pliku do tego foldera.",
+	"mobile_version" => "Wersja Mobile",
+	"standard_version" => "Widok standardowy",
 	"page_load_time" => "Zaladowano w %.2f ms",
 	"wrong_pass" => "Nie poprawna nazwa uzytkownika lub hasla",
 	"username" => "Uzytkownik",
@@ -664,6 +672,8 @@ $_TRANSLATIONS["pt_BR"] = array(
 	"log_file_permission_error" => "O script não tem permissão para escrever o arquivo de log.",
 	"upload_not_allowed" => "A configuração do script não permite envios neste diretório.",
 	"upload_dir_not_writable" => "Não há permissão para escrita neste diretório.",
+	"mobile_version" => "Versão Móvel",
+	"standard_version" => "Versão Padrão",
 	"page_load_time" => "Página carregada em %.2f ms",
 	"wrong_pass" => "Nome de usuário ou senha errados",
 	"username" => "Nome de Usuário",
@@ -712,6 +722,8 @@ $_TRANSLATIONS["ru"] = array(
     "log_file_permission_error" => "Скрипт не имеет прав для записи лога файла.",
     "upload_not_allowed" => "Загрузка в эту папку запрещена в настройках скрипта",
     "upload_dir_not_writable" => "В эту папку запрещена запись",
+    "mobile_version" => "Мобильный вид",
+    "standard_version" => "Обычный вид",
     "page_load_time" => "Страница загружена за %.2f мс.",
     "wrong_pass" => "Неверное имя пользователя или пароль",
     "username" => "Имя пользователя",
@@ -938,19 +950,6 @@ bBv+U4GaCtJ1iEm6ANQJ6fEzrG/engcKw/wXQvEKxSEKQxRGKE7Izt+DSiwBJMUSm71rguMYhQKr
 BygOIRStf4TiFFRBvbRGKiQLWP29yRSHKBTtfdBmHs0BUpgvtgF4yRFR+NUKi0XZcYjCeCG2smkz
 LAHkbRBmP0/Uk26O5YnUActBp1GsAI+S5nRJJJal5K1aAMrq0d6Tm9uI6zjyf75dAe6tx/SsWeD/
 /o2/Ab6IH3/h25pOAAAAAElFTkSuQmCC";
-$_IMAGES["dir_open"] = "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0
-U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJISURBVDjLpZPLS5RhFIef93NmnMIRSynv
-gRF5KWhRlmWbbotwU9sWLupfCBeBEYhQm2iVq1oF0TKIILIkMgosxBaBkpFDmpo549y+772dFl5b
-BIG/5eGch9+5KRFhOwrYpmIAk8+OjScr29uV2soTotzXtLOZLiD6q0oBUDjY89nGAJQErU3dD+NK
-KZDVYpTChr9a5sdvpWUtClCWqBRxZiE/9+o68CQGgJUQr8ujn/dxugyCSpRKkaw/S33n7QQigAfx
-gKCCitqpp939mwCjAvEapxOIF3xpBlOYJ78wQjxZB2LAa0QsYEm19iUQv29jBihJeltCF0F0AZNb
-IdXaS7K6ba3hdQey6iBWBS6IbQJMQGzHHqrarm0kCh6vf2AzLxGX5eboc5ZLBe52dZBsvAGRsAUg
-Ii7EFycQl0VcDrEZvFlGXBZshtCGNNa0cXVkjEdXIjBb1kiEiLd4s4jYLOKy9L1+DGLQ3qKtpW7X
-Adpqj5MLC/Q8uMi98oYtAC2icIj9jdgMYjNYrznf0YsTj/MOjzCbTXO48RR5XaJ35k2yMBCoGIBo
-v2yLSztNPpHCpwKROKHVOPF8X5rCeIv1BuMMK1GOI02nyZsiH769DVcBYXRneuhSJ8I5FCmAsNom
-rbPsrWzGeocTz1x2ht0VtXxKj/Jl+v1y0dCg/vVMl4daXKg12mtCq9lf0xGcaLnA2Mw7hidfTGhL
-5+ygROp/v/HQQLB4tPlMzcjk8EftOTk7KHr1hP4T0NKvFp0vqyl5F18YFLse/wPLHlqRZqo3CAAA
-AABJRU5ErkJgggCC";
 $_IMAGES["graphics"] = "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0
 U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAH8SURBVDjLjZPLaxNRFIfHLrpx10WbghXx
 H7DQx6p14cadiCs31Y2LLizYhdBFWyhYaFUaUxLUQFCxL61E+0gofWGLRUqGqoWp2JpGG8g4ybTJ
@@ -2270,7 +2269,7 @@ class EncodeExplorer
 
 	function makeIcon($l)
 	{
-		$l = strtolower($l);
+		$l = (empty($l)) ?  "unknown" : strtolower($l);
 		return "?img=".$l;
 	}
 
@@ -2589,13 +2588,14 @@ if(EncodeExplorer::getConfig("show_path") == true)
 	<?php } ?>
 </tr></thead>
 <tbody>
+<?php if (!empty($this->location->path)) { ?>
 <tr class="row two">
 	<td class="icon"><img alt="dir" src="?img=directory" /></td>
 	<td colspan="<?php print ((GateKeeper::isDeleteAllowed()?4:3)); ?>" class="long">
 		<a class="item" href="<?php print $this->makeLink(false, false, null, null, null, $this->location->getDir(false, true, false, 1)); ?>">..</a>
 	</td>
 </tr>
-<?php
+<?php }
 //
 // Ready to display folders and files.
 //
@@ -2611,23 +2611,15 @@ if($this->dirs)
 		$row_style = ($row ? "one" : "two");
 		print "<tr class=\"row ".$row_style."\">\n";
 		print "<td class=\"icon\"><img alt=\"dir\" src=\"?img=directory\" /></td>\n";
-		print "<td class=\"name\" colspan=\"2\">\n";
+		print "<td class=\"name\" colspan=\"3\">\n";
 		print "<a href=\"".$this->makeLink(false, false, null, null, null, $this->location->getDir(false, true, false, 0).$dir->getNameEncoded())."\" class=\"item dir\">";
 		print $dir->getNameHtml();
 		print "</a>\n";
 		print "</td>\n";
-		print "<td class=\"dir\">\n";
-		print "<a href=\"".$this->location->getDir(false, true, false, 0).$dir->getNameEncoded();
-		if(EncodeExplorer::getConfig('open_in_new_window') == true)
-			print " target=\"_blank\"";
-		print "\">";
-		print "<img alt=\"dir\" src=\"?img=dir_open\" class=\"pull-right\" />";
-		print "</a>\n";
-		print "</td>\n";
 		if(GateKeeper::isDeleteAllowed()){
 			print "<td class=\"del\"><a data-name=\"".htmlentities($dir->getName())."\" href=\"".$this->makeLink(false, false, null, null, $this->location->getDir(false, true, false, 0).$dir->getNameEncoded(), $this->location->getDir(false, true, false, 0))."\" class=\"btn btn-xs btn-danger\">"
-                                . "<span class=\"glyphicon glyphicon-remove\"></span>"
-                                . "</a></td>";
+					. "<span class=\"glyphicon glyphicon-remove\"></span>"
+					. "</a></td>";
 		}
 		print "</tr>\n";
 		$row =! $row;
