@@ -110,7 +110,7 @@ $_CONFIG['open_in_new_window'] = false;
 // Set it larger than 0 to display the total used space.
 // Default: $_CONFIG['calculate_space_level'] = 0;
 //
-$_CONFIG['calculate_space_level'] = 1;
+$_CONFIG['calculate_space_level'] = 0;
 
 //
 // Kas kuvatakse lehe päis? true/false
@@ -172,6 +172,12 @@ $_CONFIG['time_format'] = "d/m/y H:i:s";
 // Default: $_CONFIG['charset'] = "UTF-8";
 //
 $_CONFIG['charset'] = "UTF-8";
+
+//
+// Show a link to open directory
+// Default: $_CONFIG['show_dir_link'] = false;
+//
+$_CONFIG['show_dir_link'] = false;
 
 /*
 * PERMISSIONS
@@ -861,6 +867,8 @@ function css()
 #thumb img {
 	display:block;
 }
+
+.dirlink:hover, .dirlink:active, .dirlink:focus { text-decoration: none; }
 
 </style>
 
@@ -2588,18 +2596,21 @@ if(EncodeExplorer::getConfig("show_path") == true)
 	<?php } ?>
 </tr></thead>
 <tbody>
-<?php if (!empty($this->location->path)) { ?>
+<?php
+$row = empty($this->location->path);
+/* Skip showing [..] for root */
+if (!$row) {  ?>
 <tr class="row two">
 	<td class="icon"><img alt="dir" src="?img=directory" /></td>
 	<td colspan="<?php print ((GateKeeper::isDeleteAllowed()?4:3)); ?>" class="long">
 		<a class="item" href="<?php print $this->makeLink(false, false, null, null, null, $this->location->getDir(false, true, false, 1)); ?>">..</a>
 	</td>
 </tr>
-<?php }
+<?php
+}
 //
 // Ready to display folders and files.
 //
-$row = 1;
 
 //
 // Folders first
@@ -2615,6 +2626,9 @@ if($this->dirs)
 		print "<a href=\"".$this->makeLink(false, false, null, null, null, $this->location->getDir(false, true, false, 0).$dir->getNameEncoded())."\" class=\"item dir\">";
 		print $dir->getNameHtml();
 		print "</a>\n";
+		if(EncodeExplorer::getConfig('show_dir_link') == true) {
+			print "&nbsp; <a href=\"".$this->location->getDir(false, true, false, 0).$dir->getNameEncoded()."\" class=\"item dirlink pull-right\"><span class=\"label label-info\">&raquo;</span></a>\n";
+		}
 		print "</td>\n";
 		if(GateKeeper::isDeleteAllowed()){
 			print "<td class=\"del\"><a data-name=\"".htmlentities($dir->getName())."\" href=\"".$this->makeLink(false, false, null, null, $this->location->getDir(false, true, false, 0).$dir->getNameEncoded(), $this->location->getDir(false, true, false, 0))."\" class=\"btn btn-xs btn-danger\">"
@@ -2730,7 +2744,7 @@ if(GateKeeper::isAccessAllowed() && $this->location->uploadAllowed() && (GateKee
 
 ?>
 <!-- START: Info area -->
-<div id="info">
+<div id="info" class="text-muted">
 <?php
 if(GateKeeper::isUserLoggedIn())
 	print "<a href=\"".$this->makeLink(false, true, null, null, null, "")."\">".$this->getString("log_out")."</a> | ";
