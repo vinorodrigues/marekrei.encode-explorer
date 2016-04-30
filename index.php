@@ -827,7 +827,7 @@ $_TRANSLATIONS["tr"] = array(
 function css()
 {
 ?>
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <style type="text/css">
 
 /* General styles */
@@ -835,6 +835,10 @@ function css()
 .bs-callout {
 	margin: 20px 0;
 	padding: 20px;
+}
+
+#top {
+	text-align: center;
 }
 
 /* Info area */
@@ -2523,7 +2527,7 @@ $(document).ready(function() {
 <title><?php if(EncodeExplorer::getConfig('main_title') != null) print EncodeExplorer::getConfig('main_title'); ?></title>
 </head>
 <body>
-<div class="container"><div class="row"><div class="col-md-8 col-md-offset-2">
+<div class="container"><div class="row"><div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 <?php
 //
 // Print the error (if there is something to print)
@@ -2540,12 +2544,12 @@ if(EncodeExplorer::getConfig('show_top') == true)
 {
 ?>
 <h1 id="top">
-    <a href="<?php print $this->makeLink(false, false, null, null, null, ""); ?>"><span><?php if(EncodeExplorer::getConfig('main_title') != null) print EncodeExplorer::getConfig('main_title'); ?></span></a>
+    <a href="<?php print $this->makeLink(false, false, null, null, null, ""); ?>"><?php if(EncodeExplorer::getConfig('main_title') != null) print EncodeExplorer::getConfig('main_title'); ?></a>
 <?php
 if(EncodeExplorer::getConfig("secondary_titles") != null && is_array(EncodeExplorer::getConfig("secondary_titles")) && count(EncodeExplorer::getConfig("secondary_titles")) > 0)
 {
 	$secondary_titles = EncodeExplorer::getConfig("secondary_titles");
-	print "<small>".$secondary_titles[array_rand($secondary_titles)]."</small>\n";
+	print "<br><small>".$secondary_titles[array_rand($secondary_titles)]."</small>\n";
 }
 ?>
 </h1>
@@ -2588,8 +2592,8 @@ if(EncodeExplorer::getConfig("show_path") == true)
 <table class="table table-striped">
 <thead><tr class="row one header">
 	<th class="icon" width="5%"> </th>
-	<th class="name" width="<?php print GateKeeper::isDeleteAllowed()?60:65; ?>%"><?php print $this->makeArrow("name");?></th>
-	<th class="size" width="10%"><?php print $this->makeArrow("size"); ?></th>
+	<th class="name" width="<?php print GateKeeper::isDeleteAllowed()?55:60; ?>%"><?php print $this->makeArrow("name");?></th>
+	<th class="size" width="15%"><?php print $this->makeArrow("size"); ?></th>
 	<th class="changed" width="20%"><?php print $this->makeArrow("mod"); ?></th>
 	<?php if(GateKeeper::isDeleteAllowed()){?>
 	<th class="del" width="5%"><?php print EncodeExplorer::getString("del"); ?></th>
