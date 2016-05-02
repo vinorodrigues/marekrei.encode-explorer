@@ -741,6 +741,7 @@ $_IMAGES["ppsx"] = $_IMAGES["presentation"];
 $_IMAGES["ppt"] = $_IMAGES["presentation"];
 $_IMAGES["pptx"] = $_IMAGES["presentation"];
 $_IMAGES["psd"] = $_IMAGES["graphics"];
+$_IMAGES["svg"] = $_IMAGES["image"];
 $_IMAGES["rar"] = $_IMAGES["archive"];
 $_IMAGES["rb"] = "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0
 U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAIESURBVDjLjZNPTxNBGIexid9CEr8DBr8C
