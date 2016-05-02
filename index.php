@@ -7,9 +7,9 @@
  *             Author / Autor : Marek Rei (marek ät siineiolekala dot net)
  *                       : Vino Rodrigues
  *
- *      Version / Versioon : 6.3.BS.2
+ *      Version / Versioon : 6.3.BS.3
  *
- *      Last change / Viimati muudetud: 4.04.2014
+ *      Last change / Viimati muudetud: 2.05.2016
  *
  *      Homepage / Koduleht: encode-explorer.siineiolekala.net
  *
@@ -197,9 +197,9 @@ $_CONFIG['hidden_dirs'] = array();
 // NB! Märgitud nimega failid ja kaustad varjatakse kõigis alamkaustades.
 //
 // Filenames that will be hidden from the list.
-// Default: $_CONFIG['hidden_files'] = array(".ftpquota", "index.php", "index.php~", ".htaccess", ".htpasswd");
+// Default: $_CONFIG['hidden_files'] = array(".ftpquota", "index.php", "index.json", ".htaccess", ".htpasswd");
 //
-$_CONFIG['hidden_files'] = array(".ftpquota", "index.php", "index.php~", ".htaccess", ".htpasswd");
+$_CONFIG['hidden_files'] = array(".ftpquota", "index.php", "index.json", ".htaccess", ".htpasswd");
 
 //
 // Määra kas lehe nägemiseks peab sisse logima.
@@ -364,6 +364,17 @@ $_CONFIG['large_files'] = false;
 // Default: $_CONFIG['session_name'] = "";
 //
 $_CONFIG['session_name'] = "";
+
+/***************************************************************************/
+/*   LOAD EXTERNAL CONFIG                                                  */
+/***************************************************************************/
+
+if (file_exists('index.json')) {
+	$json = (array) json_decode( file_get_contents('index.json'), true );
+	foreach ($json as $key => $value) {
+		$_CONFIG[$key] = $value;
+	}
+}
 
 /***************************************************************************/
 /*   T?LKED                                                                */
@@ -844,12 +855,13 @@ function css()
 /* Info area */
 
 #info {
+	display: block;
 	position: relative;
 	margin: 0 auto;
 	text-align: center;
         margin-top: 10px;
-        padding-top: 5px;
-        border-top: 1px solid #EEE;
+        padding-top: 4px;
+        border-top: 1px dotted #EEE;
 }
 
 /* Upload area */
@@ -861,11 +873,11 @@ function css()
 /* Thumbnail area */
 
 #thumb {
-	position:absolute;
+	position: absolute;
 	border: 1px solid #CDD2D6;
-	background:#f8f9fa;
-	display:none;
-	padding:3px;
+	background: #f8f9fa;
+	display: none;
+	padding: 3px;
 }
 
 #thumb img {
@@ -1061,6 +1073,21 @@ PMIZixPHmAAOGxZQec2OQyo7zpm6cNN6GZ2kK1RAofPAr8GA4oUMrdNNkIw/wPFhDwSjX3Dwlg0C
 Qy96HreiTlcFZsaAjY0NNvh3QUXtHeHcoKMNA7NjqLd8xHmzDzXDRvRO1KHtngTyhzL4SHeooAAn
 KMxBtUYQbGWa0Dc+AsWzSVy3qkjeItLCFsz4XoNMaRFFAm4SyTXbmQa2YHQSGacR/pAXO+zGFif4
 JdlHCpShBzstEz+YfJtmt5cnKKWS/1jnAnT1S38AGTynUFUTzJcAAAAASUVORK5CYII=";
+$_IMAGES["home"] = "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0
+U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAK4SURBVDjLjZPrT1JhHMfPq/NH+K6ty2bh
+JcswzUa2hTMaEmCsZmWuUU0HQuAVEWHMgCnLy2yOhiOKIs0L08ByXgab1TTRNlO7ULwylTOZ9iL9
+djiVrdLmi++bZ7/P5znP93kOAYDYKt1F+0k6cR4ZK86jSCS3m9sW7pGxwh5FwlqfOmnNW34w7NUc
+Inck6Ck+QNJgZNjExYTzOl67iuG/nQuf7kjEp2eT/xV45AlknyopMmLJweRDGR05Jt1KBDvLMdoi
+Rp8uLeKpTiO3FHiUiWR/WTI12sBD8JEC/kYBvLXpeGrIwHCTGOPuKgxYRXCXsan7ilTyD0G/Opn0
+lqdQfisfwccq+JuEGKjjYHpqkklvLQc+iwiBe2p06/mwSVOo5kvJjISgCyLpgij/bQGCHWX0p4rg
+NZ7AyxdjWFxcxPLyMuZmZ+BUHUOHlodnd26g/eYpmIQsSn86niR81akBf9PZn+fMo+EsTIy/wtLS
+EgP/yuzbGbQUsnFXdhJd5gtoLMxAOWdvgKCb5Xr1aevDzXno0WZufHg3t7nz3/n08T1qclhouHgU
+ZZl71ulwfxRYncZ9omGPWOstG6urq8ywUqmESqWCWq1GaWkpsxaNRmEx3YKaEz8Vg/+5RpPJtEJR
+FDMcA1tbW9HW1obKyspNQUwqkUj2bfkODAbDSiQSYYYrKipgs9lgt9tRU1OzKZDL5RAKhb8FRc8v
+JxR0nTsvtvMGxBb+N8dQO2ISjUYDh8MBp9MJWsysPXhjR0GnBGIbbzrbytGmaw/zCRr+LOu9iqrB
+EhT1FqDAmo9wOAydTgeXywW32426ujqEQiFoBlSoH9NDO6REvkOERFl8lKB3HqRtIdoWOC5Lp3jX
+chakUum80WhkQLoXmM1mCASC+dySMwvZtVlf0zWpYzT8ZfeVXYPEdr/pTvMdjX2sh+52/VQAAAAA
+SUVORK5CYII=";
 
 
 $_IMAGES["7z"] = $_IMAGES["archive"];
@@ -2131,12 +2158,14 @@ class EncodeExplorer
 			$this->sort_as = "desc";
 		}
 
-
 		global $_TRANSLATIONS;
 		if(isset($_GET['lang']) && isset($_TRANSLATIONS[$_GET['lang']]))
 			$this->lang = $_GET['lang'];
 		else
 			$this->lang = EncodeExplorer::getConfig("lang");
+
+		$_TRANSLATIONS[$this->lang]["root"] = "<img title=\"" .
+			$_TRANSLATIONS[$this->lang]["root"] . "\" src=\"?img=home\">";
 
 		$this->logging = false;
 		if(EncodeExplorer::getConfig("log_file") != null && strlen(EncodeExplorer::getConfig("log_file")) > 0)
@@ -2250,8 +2279,8 @@ class EncodeExplorer
 		else if($sort_by == "mod")
 			$text = $this->getString("last_changed");
 
-		return "<a href=\"".$this->makeLink(false, false, $sort_by, $sort_as, null, $this->location->getDir(false, true, false, 0))."\">
-			$text <img style=\"border:0;\" alt=\"".$sort_as."\" src=\"?img=".$img."\" /></a>";
+		return "<a href=\"".$this->makeLink(false, false, $sort_by, $sort_as, null, $this->location->getDir(false, true, false, 0))."\">".
+			$text." <img alt=\"".$sort_as."\" src=\"?img=".$img."\"></a>";
 	}
 
 	function makeLink($switchVersion, $logout, $sort_by, $sort_as, $delete, $dir)
@@ -2414,14 +2443,14 @@ class EncodeExplorer
 			{
 			?>
 			<div class="form-group"><label for="user_name" class="col-sm-2 control-label"><?php print $this->getString("username"); ?></label>
-                        <div class="col-sm-8"><input type="text" name="user_name" value="" id="user_name" class="form-control" required /></div></div>
+                        <div class="col-sm-8"><input type="text" name="user_name" value="" id="user_name" class="form-control" required></div></div>
 			<?php
 			}
 			?>
 			<div class="form-group"><label for="user_pass" class="col-sm-2 control-label"><?php print $this->getString("password"); ?></label>
-                        <div class="col-sm-8"><input type="password" name="user_pass" id="user_pass" class="form-control" required /></div></div>
+                        <div class="col-sm-8"><input type="password" name="user_pass" id="user_pass" class="form-control" required></div></div>
                         <div class="form-group"><div class="col-sm-offset-2 col-sm-8">
-			<input type="submit" value="<?php print $this->getString("log_in"); ?>" class="btn btn-default" />
+			<input type="submit" value="<?php print $this->getString("log_in"); ?>" class="btn btn-default">
 			</div></div>
 		</form>
 		</div>
@@ -2444,15 +2473,16 @@ class EncodeExplorer
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=<?php print $this->getConfig('charset'); ?>">
 <?php css(); ?>
-<!-- <meta charset="<?php print $this->getConfig('charset'); ?>" /> -->
+<!-- <meta charset="<?php print $this->getConfig('charset'); ?>"> -->
 <?php
 if(($this->getConfig('log_file') != null && strlen($this->getConfig('log_file')) > 0)
 	|| ($this->getConfig('thumbnails') != null && $this->getConfig('thumbnails') == true)
 	|| (GateKeeper::isDeleteAllowed()))
 {
 ?>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<script src="//code.jquery.com/jquery-1.12.3.min.js"></script>
 <script type="text/javascript">
 //<![CDATA[
 $(document).ready(function() {
@@ -2468,53 +2498,53 @@ $(document).ready(function() {
 	if($this->logging == true)
 	{
 ?>
-		function logFileClick(path)
-		{
-			 $.ajax({
-		        	async: false,
-					type: "POST",
-					data: {log: path},
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-					cache: false
-				});
-		}
+	function logFileClick(path) {
+		$.ajax({
+	        	async: false,
+			type: "POST",
+			data: {log: path},
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			cache: false
+			});
+	}
 
-		$("a.file").click(function(){
-			logFileClick("<?php print $this->location->getDir(true, true, false, 0);?>" + $(this).html());
-			return true;
-		});
+	$("a.file").click(function(){
+		logFileClick("<?php print $this->location->getDir(true, true, false, 0);?>" + $(this).html());
+		return true;
+	});
 <?php
 	}
 	if(EncodeExplorer::getConfig("thumbnails") == true)
 	{
 ?>
-		function positionThumbnail(e) {
-			xOffset = 30;
-			yOffset = 10;
-			$("#thumb").css("left",(e.clientX + xOffset) + "px");
+	function positionThumbnail(e) {
+		xOffset = 30;
+		yOffset = 10;
+		$("#thumb").css("left",(e.clientX + xOffset) + "px");
 
-			diff = 0;
-			if(e.clientY + $("#thumb").height() > $(window).height())
-				diff = e.clientY + $("#thumb").height() - $(window).height();
+		diff = 0;
+		if(e.clientY + $("#thumb").height() > $(window).height())
+			diff = e.clientY + $("#thumb").height() - $(window).height();
 
-			$("#thumb").css("top",(e.pageY - yOffset - diff) + "px");
-		}
+		$("#thumb").css("top",(e.pageY - yOffset - diff) + "px");
+	}
 
-		$("a.thumb").hover(function(e){
-			$("#thumb").remove();
-			$("body").append("<div id=\"thumb\"><img src=\"?thumb="+ $(this).attr("href") +"\" alt=\"Preview\" \/><\/div>");
-			positionThumbnail(e);
-			$("#thumb").fadeIn("medium");
-		},
-		function(){
-			$("#thumb").remove();
+	$("a.thumb").hover(function(e){
+		$("#thumb").remove();
+		$("body").append("<div id=\"thumb\"><img src=\"?thumb="+ $(this).attr("href") +"\" alt=\"Preview\"><\/div>");
+		positionThumbnail(e);
+		$("#thumb").fadeIn("medium");
+	},
+
+	function(){
+		$("#thumb").remove();
+	});
+
+	$("a.thumb").mousemove(function(e){
+		positionThumbnail(e);
 		});
 
-		$("a.thumb").mousemove(function(e){
-			positionThumbnail(e);
-			});
-
-		$("a.thumb").click(function(e){$("#thumb").remove(); return true;});
+	$("a.thumb").click(function(e){$("#thumb").remove(); return true;});
 <?php
 	}
 ?>
@@ -2590,24 +2620,27 @@ if(EncodeExplorer::getConfig("show_path") == true)
 
 <!-- START: List table -->
 <table class="table table-striped">
-<thead><tr class="row one header">
-	<th class="icon" width="5%"> </th>
-	<th class="name" width="<?php print GateKeeper::isDeleteAllowed()?55:60; ?>%"><?php print $this->makeArrow("name");?></th>
-	<th class="size" width="15%"><?php print $this->makeArrow("size"); ?></th>
-	<th class="changed" width="20%"><?php print $this->makeArrow("mod"); ?></th>
-	<?php if(GateKeeper::isDeleteAllowed()){?>
-	<th class="del" width="5%"><?php print EncodeExplorer::getString("del"); ?></th>
-	<?php } ?>
-</tr></thead>
+<thead>
+	<tr class="row one header">
+		<th class="icon" width="5%"></th>
+		<th class="name" width="<?php print GateKeeper::isDeleteAllowed()?55:60; ?>%"><?php print $this->makeArrow("name");?></th>
+		<th class="size" width="15%"><?php print $this->makeArrow("size"); ?></th>
+		<th class="changed" width="20%"><?php print $this->makeArrow("mod"); ?></th>
+<?php if(GateKeeper::isDeleteAllowed()){?>
+		<th class="del" width="5%"><?php print EncodeExplorer::getString("del"); ?></th>
+<?php } ?>
+	</tr>
+</thead>
 <tbody>
 <?php
 $row = empty($this->location->path);
 /* Skip showing [..] for root */
 if (!$row) {  ?>
 <tr class="row two">
-	<td class="icon"><img alt="dir" src="?img=directory" /></td>
+	<?php $url = $this->makeLink(false, false, null, null, null, $this->location->getDir(false, true, false, 1)); ?>
+	<th class="icon"><a class="item" href="<?php print $url; ?>"><img alt="dir" src="?img=directory"></a></th>
 	<td colspan="<?php print ((GateKeeper::isDeleteAllowed()?4:3)); ?>" class="long">
-		<a class="item" href="<?php print $this->makeLink(false, false, null, null, null, $this->location->getDir(false, true, false, 1)); ?>">..</a>
+		<a class="item" href="<?php print $url; ?>">..</a>
 	</td>
 </tr>
 <?php
@@ -2624,14 +2657,19 @@ if($this->dirs)
 	foreach ($this->dirs as $dir)
 	{
 		$row_style = ($row ? "one" : "two");
-		print "<tr class=\"row ".$row_style."\">\n";
-		print "<td class=\"icon\"><img alt=\"dir\" src=\"?img=directory\" /></td>\n";
-		print "<td class=\"name\" colspan=\"3\">\n";
-		print "<a href=\"".$this->makeLink(false, false, null, null, null, $this->location->getDir(false, true, false, 0).$dir->getNameEncoded())."\" class=\"item dir\">";
+		$url = $this->makeLink(false, false, null, null, null, $this->location->getDir(false, true, false, 0).$dir->getNameEncoded());
+		print "\t<tr class=\"row ".$row_style."\">\n";
+		print "\t\t<th class=\"icon\">";
+		print "<a href=\"".$url."\" class=\"item dir\">";
+		print "<img alt=\"dir\" src=\"?img=directory\" />";
+		print "</a>";
+		print "</th>\n";
+		print "\t\t<td class=\"name\" colspan=\"3\">";
+		print "<a href=\"".$url."\" class=\"item dir\">";
 		print $dir->getNameHtml();
-		print "</a>\n";
+		print "</a>";
 		if(EncodeExplorer::getConfig('show_dir_link') == true) {
-			print "&nbsp; <a href=\"".$this->location->getDir(false, true, false, 0).$dir->getNameEncoded()."\" class=\"item dirlink pull-right\"><span class=\"label label-info\">&raquo;</span></a>\n";
+			print "\t\t<a href=\"".$this->location->getDir(false, true, false, 0).$dir->getNameEncoded()."\" class=\"item dirlink pull-right\"><span class=\"label label-info\">&raquo;</span></a>";
 		}
 		print "</td>\n";
 		if(GateKeeper::isDeleteAllowed()){
@@ -2639,7 +2677,7 @@ if($this->dirs)
 					. "<span class=\"glyphicon glyphicon-remove\"></span>"
 					. "</a></td>";
 		}
-		print "</tr>\n";
+		print "\t</tr>\n";
 		$row =! $row;
 	}
 }
@@ -2653,10 +2691,15 @@ if($this->files)
 	foreach ($this->files as $file)
 	{
 		$row_style = ($row ? "one" : "two");
-		print "<tr class=\"row ".$row_style.(++$count == count($this->files)?" last":"")."\">\n";
-		print "<td class=\"icon\"><img alt=\"".$file->getType()."\" src=\"".$this->makeIcon($file->getType())."\" /></td>\n";
-		print "<td class=\"name\">\n";
-		print "\t\t<a href=\"".$this->location->getDir(false, true, false, 0).$file->getNameEncoded()."\"";
+		$url = $this->location->getDir(false, true, false, 0).$file->getNameEncoded();
+		print "\t<tr class=\"row ".$row_style.(++$count == count($this->files)?" last":"")."\">\n";
+		print "\t\t<th class=\"icon\">";
+		print "<a href=\"".$url."\">";
+		print "<img alt=\"".$file->getType()."\" src=\"".$this->makeIcon($file->getType())."\" />";
+		print "</a>";
+		print "</th>\n";
+		print "\t\t<td class=\"name\">";
+		print "<a href=\"".$url."\"";
 		if(EncodeExplorer::getConfig('open_in_new_window') == true)
 			print " target=\"_blank\"";
 		print " class=\"item file";
@@ -2664,17 +2707,17 @@ if($this->files)
 			print " thumb";
 		print "\">";
 		print $file->getNameHtml();
-		print "</a>\n";
+		print "</a>";
 		print "</td>\n";
-                print "<td class=\"size\">".$this->formatSize($file->getSize())."</td>\n";
-		print "<td class=\"changed\">".$this->formatModTime($file->getModTime())."</td>\n";
+                print "\t\t<td class=\"size\">".$this->formatSize($file->getSize())."</td>\n";
+		print "\t\t<td class=\"changed\">".$this->formatModTime($file->getModTime())."</td>\n";
 		if(GateKeeper::isDeleteAllowed()){
-			print "<td class=\"del\">" .
+			print "\t\t<td class=\"del\">" .
 				"<a data-name=\"".htmlentities($file->getName())."\" href=\"".$this->makeLink(false, false, null, null, $this->location->getDir(false, true, false, 0).$file->getNameEncoded(), $this->location->getDir(false, true, false, 0))."\" class=\"btn btn-xs btn-danger\">" .
 				"<span class=\"glyphicon glyphicon-remove\"></span>" .
 				"</a></td>";
 		}
-		print "</tr>\n";
+		print "\t</tr>\n";
 		$row =! $row;
 	}
 }
@@ -2748,22 +2791,22 @@ if(GateKeeper::isAccessAllowed() && $this->location->uploadAllowed() && (GateKee
 
 ?>
 <!-- START: Info area -->
-<div id="info" class="text-muted">
+<small id="info" class="text-muted">
 <?php
 if(GateKeeper::isUserLoggedIn())
-	print "<a href=\"".$this->makeLink(false, true, null, null, null, "")."\">".$this->getString("log_out")."</a> | ";
+	print "<a href=\"".$this->makeLink(false, true, null, null, null, "")."\">".$this->getString("log_out")."</a> &squf; ";
 
 if(GateKeeper::isAccessAllowed() && $this->getConfig("calculate_space_level") > 0)
 {
-	print $this->getString("total_used_space").": ".$this->spaceUsed." MB | ";
+	print $this->getString("total_used_space").": ".$this->spaceUsed." MB &squf; ";
 }
 if($this->getConfig("show_load_time") == true)
 {
-	printf($this->getString("page_load_time")." | ", (microtime(TRUE) - $_START_TIME)*1000);
+	printf($this->getString("page_load_time")." &squf; ", (microtime(TRUE) - $_START_TIME)*1000);
 }
 ?>
 <a href="https://github.com/vinorodrigues/encode-explorer">Encode Explorer</a>
-</div>
+</small>
 <!-- END: Info area -->
 </div></div></div>
 </body>

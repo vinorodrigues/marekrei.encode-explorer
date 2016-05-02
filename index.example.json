@@ -1,0 +1,40 @@
+{
+	"lang":"en",
+	"thumbnails":true,
+	"thumbnails_width":200,
+	"thumbnails_height":200,
+	"open_in_new_window":false,
+	"calculate_space_level":0,
+	"show_top":true,
+	"main_title":"Encode Explorer",
+	"secondary_titles":[],
+	"show_path":true,
+	"show_load_time":true,
+	"time_format":"d\/m\/y H:i:s",
+	"charset":"UTF-8",
+	"show_dir_link":false,
+	"hidden_dirs":[],
+	"hidden_files":[
+		".ftpquota",
+		"index.php",
+		"index.json",
+		".htaccess",
+		".htpasswd"
+	],
+	"require_login":false,
+	"users":[],
+	"upload_enable":true,
+	"newdir_enable":true,
+	"delete_enable":false,
+	"upload_dirs":[],
+	"upload_allow_type":[],
+	"upload_reject_extension":[
+		"php"
+	],
+	"upload_email":"",
+	"log_file":"",
+	"starting_dir":".",
+	"basedir":"",
+	"large_files":false,
+	"session_name":""
+}
