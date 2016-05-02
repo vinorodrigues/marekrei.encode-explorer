@@ -31,6 +31,8 @@
 	"upload_reject_extension":[
 		"php"
 	],
+	"new_dir_mode":0755,
+	"upload_file_mode":0644,
 	"upload_email":"",
 	"log_file":"",
 	"starting_dir":".",
