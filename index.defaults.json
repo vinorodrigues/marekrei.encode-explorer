@@ -38,5 +38,6 @@
 	"starting_dir":".",
 	"basedir":"",
 	"large_files":false,
-	"session_name":""
+	"session_name":"",
+	"stylesheet":"//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 }

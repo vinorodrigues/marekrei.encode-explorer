@@ -131,9 +131,9 @@ $_CONFIG['hidden_dirs'] = array();
 
 //
 // Filenames that will be hidden from the list.
-// Default: $_CONFIG['hidden_files'] = array(".ftpquota", "index.php", "index.json", ".htaccess", ".htpasswd");
+// Default: $_CONFIG['hidden_files'] = array("index.php", "index.json", "index.css", ".htaccess", ".htpasswd", ".ftpquota");
 //
-$_CONFIG['hidden_files'] = array(".ftpquota", "index.php", "index.json", ".htaccess", ".htpasswd");
+$_CONFIG['hidden_files'] = array("index.php", "index.json", "index.css", ".htaccess", ".htpasswd", ".ftpquota");
 
 //
 // Whether authentication is required to see the contents of the page.
@@ -278,6 +278,11 @@ $_CONFIG['large_files'] = false;
 //
 $_CONFIG['session_name'] = "";
 
+//
+// Styleheet loaded, can be string or array() of strings.
+//
+$_CONFIG['stylesheet'] = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css";
+
 /***************************************************************************/
 /*   TRANSLATIONS.                                                         */
 /*                                                                         */
@@ -338,8 +343,13 @@ if (file_exists($config_file)) {
 
 function css()
 {
+	global $_CONFIG;
+	if (is_array($_CONFIG["stylesheet"])) {
+		foreach ($_CONFIG["stylesheet"] as $value)
+			print "<link rel=\"stylesheet\" href=\"" . $value . "\">\n";
+	} else
+		print "<link rel=\"stylesheet\" href=\"" . $_CONFIG["stylesheet"] . "\">\n";
 ?>
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <style type="text/css">
 
 /* General styles */
@@ -408,6 +418,9 @@ function css()
 </style>
 
 <?php
+	$addon_css_file = basename(__FILE__, '.php').".css";
+	if (file_exists($addon_css_file))
+		echo "\n<link rel=\"stylesheet\" href=\"" . $addon_css_file . "\">";
 }
 
 /***************************************************************************/
@@ -2009,8 +2022,6 @@ if(($this->getConfig('log_file') != null && strlen($this->getConfig('log_file'))
 	|| (GateKeeper::isDeleteAllowed()))
 {
 ?>
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <script src="//code.jquery.com/jquery-1.12.3.min.js"></script>
 <script type="text/javascript">
 //<![CDATA[
@@ -2083,7 +2094,7 @@ $(document).ready(function() {
 <?php
 }
 ?>
-<title><?php if(EncodeExplorer::getConfig('main_title') != null) print EncodeExplorer::getConfig('main_title'); ?></title>
+<title><?php if(EncodeExplorer::getConfig('main_title') != null) print strip_tags(EncodeExplorer::getConfig('main_title')); ?></title>
 </head>
 <body>
 <div class="container"><div class="row"><div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
