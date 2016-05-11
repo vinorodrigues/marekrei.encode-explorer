@@ -352,6 +352,12 @@ function css()
 ?>
 <style type="text/css">
 
+@media (min-width: 960px) {
+	.container {
+		max-width: 922px;
+	}
+}
+
 /* General styles */
 
 .alert {
@@ -2097,7 +2103,7 @@ $(document).ready(function() {
 <title><?php if(EncodeExplorer::getConfig('main_title') != null) print strip_tags(EncodeExplorer::getConfig('main_title')); ?></title>
 </head>
 <body>
-<div class="container"><div class="row"><div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+<div class="container"><div class="row"><div class="col-sm-12">
 <?php
 //
 // Print the error (if there is something to print)
@@ -2166,13 +2172,13 @@ if($cnt != 0) $root = "<a href=\"?dir=\">".$root."</a>";
 <!-- START: List table -->
 <table class="table table-striped">
 <thead>
-	<tr class="row one header">
+	<tr class="row header">
 		<th class="icon" width="5%"></th>
 		<th class="name" width="<?php print GateKeeper::isDeleteAllowed()?55:60; ?>%"><?php print $this->makeArrow("name");?></th>
 		<th class="size" width="15%"><?php print $this->makeArrow("size"); ?></th>
 		<th class="changed" width="20%"><?php print $this->makeArrow("mod"); ?></th>
 <?php if(GateKeeper::isDeleteAllowed()){?>
-		<th class="del" width="5%"><?php print EncodeExplorer::getString("del"); ?></th>
+		<th class="del text-danger" width="5%"><?php print EncodeExplorer::getString("del"); ?></th>
 <?php } ?>
 	</tr>
 </thead>
