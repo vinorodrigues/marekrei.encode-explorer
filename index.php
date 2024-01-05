@@ -206,7 +206,7 @@ $_CONFIG['upload_allow_type'] = array();
 $_CONFIG['upload_reject_extension'] = array("php", "php2", "php3", "php4", "php5", "phtml");
 
 //
-// By default, apply 0755 permissions to new directories
+// By default, apply 755 permissions to new directories
 //
 // The mode parameter consists of three octal number components specifying
 // access restrictions for the owner, the user group in which the owner is
@@ -214,12 +214,12 @@ $_CONFIG['upload_reject_extension'] = array("php", "php2", "php3", "php4", "php5
 //
 // See: https://php.net/manual/en/function.chmod.php
 //
-// Default: $_CONFIG['new_dir_mode'] = 0755;
+// Default: $_CONFIG['new_dir_mode'] = 755;
 //
-$_CONFIG['new_dir_mode'] = 0755;
+$_CONFIG['new_dir_mode'] = 755;
 
 //
-// By default, apply 0644 permissions to uploaded files
+// By default, apply 644 permissions to uploaded files
 //
 // The mode parameter consists of three octal number components specifying
 // access restrictions for the owner, the user group in which the owner is
@@ -227,9 +227,9 @@ $_CONFIG['new_dir_mode'] = 0755;
 //
 // See: https://php.net/manual/en/function.chmod.php
 //
-// Default: $_CONFIG['upload_file_mode'] = 0644;
+// Default: $_CONFIG['upload_file_mode'] = 644;
 //
-$_CONFIG['upload_file_mode'] = 0644;
+$_CONFIG['upload_file_mode'] = 644;
 
 /*
  * LOGGING
@@ -287,7 +287,12 @@ $_CONFIG['session_name'] = "";
 //
 // Styleheet loaded, can be string or array() of strings.
 //
-$_CONFIG['stylesheet'] = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css";
+$_CONFIG['stylesheet'] = "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css";
+$_CONFIG['javascript'] = array(
+	"https://code.jquery.com/jquery-3.3.1.slim.min.js",
+	"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js",
+	);
+
 
 /***************************************************************************/
 /*   TRANSLATIONS.                                                         */
@@ -338,6 +343,7 @@ $_TRANSLATIONS["en"] = array(
 $config_file = basename(__FILE__, '.php').".json";
 if (file_exists($config_file)) {
 	$json = (array) json_decode( file_get_contents($config_file), true );
+	if ($json == NULL) echo '<!-- JSON Error ' . json_last_error() . ': ' . json_last_error_msg() . ' -->';
 	foreach ($json as $key => $value)
 		if ($key != 'translation') $_CONFIG[$key] = $value;
 	// TODO: Load translations from json file(?)
@@ -2018,6 +2024,7 @@ class EncodeExplorer
 	{
 		global $_ERROR;
 		global $_START_TIME;
+		global $_CONFIG;
 ?>
 <!DOCTYPE HTML>
 <html lang="<?php print $this->getConfig('lang'); ?>">
@@ -2032,8 +2039,13 @@ if(($this->getConfig('log_file') != null && strlen($this->getConfig('log_file'))
 	|| ($this->getConfig('thumbnails') != null && $this->getConfig('thumbnails') == true)
 	|| (GateKeeper::isDeleteAllowed()))
 {
+
+if (is_array($_CONFIG["javascript"])) {
+	foreach ($_CONFIG["javascript"] as $value)
+		print "<script type=\"text/javascript\" src=\"" . $value . "\"></script>\n";
+} else
+	print "<script type=\"text/javascript\" src=\"" . $_CONFIG["javascript"] . "\"></script>\n";
 ?>
-<script src="//code.jquery.com/jquery-1.12.3.min.js"></script>
 <script type="text/javascript">
 //<![CDATA[
 $(document).ready(function() {
