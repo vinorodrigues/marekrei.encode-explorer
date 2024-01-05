@@ -6,7 +6,7 @@
  *
  * Author : Marek Rei (marek ät marekrei dot com)
  *        : Vino Rodrigues
- * Version : 6.4.1-BS3.3.6
+ * Version : 6.4.2-BS3.3.6
  * Homepage : encode-explorer.siineiolekala.net
  *
  *
@@ -62,6 +62,12 @@ $_CONFIG['thumbnails_height'] = 200;
 // Default: $_CONFIG['open_in_new_window'] = false;
 //
 $_CONFIG['open_in_new_window'] = false;
+
+//
+// When clicking on files, will the files be downloaded rather than opened? true/false
+// Default: $_CONFIG['force_download'] = false;
+//
+$_CONFIG['force_download'] = false;
 
 //
 // How deep in subfolders will the script search for files?
@@ -1223,8 +1229,6 @@ class FileManager
 	{
 		global $encodeExplorer;
 		$name = basename($userfile['name']);
-		if(get_magic_quotes_gpc())
-			$name = stripslashes($name);
 
 		$upload_dir = $location->getFullPath();
 		$upload_file = $upload_dir . $name;
@@ -1669,6 +1673,7 @@ class EncodeExplorer
 	var $logging;
 	var $spaceUsed;
 	var $lang;
+	var $mobile;
 
 	//
 	// Determine sorting, calculate space.
@@ -1900,7 +1905,7 @@ class EncodeExplorer
 
 	public static function cmp_name($a, $b)
 	{
-		return strcasecmp($a->name, $b->name);
+		return strnatcasecmp($a->name, $b->name);
 	}
 
 	public static function cmp_size($a, $b)
@@ -2259,7 +2264,10 @@ if($this->files)
 		print " class=\"item file";
 		if($file->isValidForThumb())
 			print " thumb";
-		print "\">";
+		print "\"";
+		if(EncodeExplorer::getConfig('force_download') == true)
+			print " download";
+		print ">";
 		print $file->getNameHtml();
 		print "</a>";
 		print "</td>\n";
